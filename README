@@ -3,7 +3,7 @@ README
 
 Note that this is just a quick script that needs a lot of work. :)
 
-This is a backup script that will dump all the mysql databases to a .gz file in a specified directory on the localhost and then rsync that directory over ssh to a remote host.
+This MySQL backup script that will dump all the mysql databases to a .gz file in a specified directory on the localhost and then rsync that directory over ssh to a remote host.
 
 The backups script goes into /etc/cron.daily and will thus be run once a day.
 
