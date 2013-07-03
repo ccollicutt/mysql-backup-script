@@ -12,7 +12,7 @@ Required files and directories
 - my.cnf which has the information required to login to mysql and also what host
 - A local directory to backup mysql to, usually /var/lib/backups/mysql
 
-ssh keys
+SSH Keys
 ========
 
 With regards to ssh keys, I usually add this to the beginning of the keys line in authorized_keys:
