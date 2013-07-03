@@ -8,3 +8,7 @@ Required files and directories
 - my.cnf which has the information required to login to mysql and also what host
 
 Note that this is just a quick script that needs a lot of work.
+
+Also, with regards to ssh keys, I usually add this to the beginning of the keys line in authorized_keys:
+
+no-port-forwarding,no-X11-forwarding,no-pty,from="<some_ip_address>" ...
