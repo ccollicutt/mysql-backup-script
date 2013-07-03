@@ -10,6 +10,7 @@ Required files and directories
 - /etc/mysql-backup
 - backup and backup.pub which are the ssh keypair used for the remote login, and the public key would have to be in the remote users authorize_keys file
 - my.cnf which has the information required to login to mysql and also what host
+- A local directory to backup mysql to, usually /var/lib/backups/mysql
 
 ssh keys
 ========
