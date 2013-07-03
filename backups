@@ -2,7 +2,8 @@
 
 # TODO
 # - error message for exiting in empty vars
-# - ...
+# - check if getting dbnames actually worked
+# - 
 
 # 
 # VARS
