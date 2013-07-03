@@ -55,17 +55,15 @@ RES=0
 ##### MYSQL #####
 DBNAMES=`mysql --defaults-file=/etc/mysql-backup/my.cnf --execute="SHOW DATABASES" | awk '{print $1}' | grep -v ^Database$ | grep -v ^information_schema$ | grep -v ^mysql$ | grep -v ^performance_schema$ | tr \\\r\\\n ,\ `
 
-
-
 # Dump the entire MySQL database
-if ! /usr/bin/mysqldump --defaults-file=/etc/mysql-backup/my.cnf --opt --databases $DBNAMES | /bin/gzip > $MYSQL_BACKUP_FILENAME; then
-	/usr/bin/logger -s "$0 ERROR: mysqldump failed, exiting..."
+if ! mysqldump --defaults-file=/etc/mysql-backup/my.cnf --opt --databases $DBNAMES | gzip > $MYSQL_BACKUP_FILENAME; then
+	logger -s "$0 ERROR: mysqldump failed, exiting..."
 	exit 1
 fi
 
 # Delete backups older than 7 days
-if ! /usr/bin/find $MYSQL_BACKUP_DIR -ctime +7 -type f -delete; then
-	/usr/bin/logger -s "$0 ERROR: mysql backup deletion failed, exiting..."
+if ! find $MYSQL_BACKUP_DIR -ctime +7 -type f -delete; then
+	logger -s "$0 ERROR: mysql backup deletion failed, exiting..."
 	exit 1
 fi
 
@@ -76,7 +74,7 @@ fi
 RES=$?
 
 if [ "$RES" != 0 ]; then
-	/usr/bin/logger -s "$0 ERROR: rsync of $MYSQL_BACKUP_DIR failed, exiting..."
+	logger -s "$0 ERROR: rsync of $MYSQL_BACKUP_DIR failed, exiting..."
 	exit 1
 fi
 
